@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -6,7 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  settingsForm: FormGroup;
 
-  constructor() {}
+  constructor(
+    private toastController: ToastController
+  ) {
+    this.settingsForm = new FormGroup({
+      themeToggle: new FormControl(localStorage.getItem('dark_theme')),
+    });
+  }
 
+  ngOnInit() {
+  }
 }
